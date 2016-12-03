@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gs.dao.ProductDAO">
+
+    <resultMap id="adminResultMap" type="product">
+        <id property="id" column="id" />
+        <result property="createTime" column="create_time" />
+        <result property="lastLoginTime" column="last_login_time" />
+        <result property="loginTime" column="login_time" />
+    </resultMap>
+
+    <select id="queryById" parameterType="string" resultMap="adminResultMap">
+        <![CDATA[
+        select * from t_admin where id=#{id}
+        ]]>
+    </select>
+
+    <select id="query" parameterType="product" resultMap="adminResultMap">
+        <![CDATA[
+        select * from t_admin where email=#{email} and password = #{password} and status = 'Y'
+        ]]>
+    </select>
+
+    <select id="queryByPagerAndCriteria" resultType="list" resultMap="adminResultMap">
+        <![CDATA[
+        select * from t_admin where 1 = 1
+        ]]>
+        <if test="product.email != null and product.email != ''">
+            and email like concat('%', #{product.email}, '%')
+        </if>
+        <if test="product.name != null and product.name !=''">
+            and name like concat('%', #{product.name}, '%')
+        </if>
+        <if test="product.phone != null and product.phone !=''">
+            and phone like concat('%', #{product.phone}, '%')
+        </if>
+        <if test="product.status != null and product.status != ''">
+            and status = #{product.status}
+        </if>
+        order by create_time desc
+        limit #{pager.beginIndex}, #{pager.pageSize}
+
+    </select>
+
+    <select id="countByCriteria" resultType="int">
+        <![CDATA[
+        select count(1) from t_admin where 1 = 1
+        ]]>
+        <if test="product.email != null and product.email != ''">
+            and email = #{product.email}
+        </if>
+        <if test="product.name != null and product.name !=''">
+            and name = #{product.name}
+        </if>
+        <if test="product.phone != null and product.phone !=''">
+            and phone = #{product.phone}
+        </if>
+        <if test="product.status != null and product.status != ''">
+            and status = #{product.status}
+        </if>
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="product">
+        <![CDATA[
+        insert into t_admin(id, email, password, name, phone, role) values(uuid(), #{email}, #{password}, #{name}, #{phone}, #{role})
+        ]]>
+    </insert>
+
+    <update id="inactive" keyProperty="id" parameterType="string">
+        <![CDATA[
+        update t_admin set status = 'N' where id = #{id}
+        ]]>
+    </update>
+
+    <update id="active" keyProperty="id" parameterType="string">
+        <![CDATA[
+        update t_admin set status = 'Y' where id = #{id}
+        ]]>
+    </update>
+
+    <update id="updateLoginTime" keyProperty="id" parameterType="string">
+        <![CDATA[
+        update t_admin set last_login_time = login_time, login_time = CURRENT_TIMESTAMP where id = #{id}
+        ]]>
+    </update>
+
+    <update id="update" keyProperty="id" parameterType="product">
+        <![CDATA[
+        update t_admin set name = #{name}, phone = #{phone} where id = #{id}
+        ]]>
+    </update>
+
+    <update id="updatePassword" keyProperty="id" parameterType="product">
+        <![CDATA[
+        update t_admin set password = #{password} where id = #{id}
+        ]]>
+    </update>
+
+</mapper>

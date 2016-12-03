@@ -1,0 +1,172 @@
+@charset "UTF-8";
+
+body {
+    margin: 0;
+    padding: 0;
+    height:100%;
+}
+
+* {
+    font-size: 12px;
+}
+
+a:link, a:visited, a:active {
+    color:black;
+    text-decoration: none;
+}
+
+a:hover {
+    color:blue;
+    text-decoration: underline;
+}
+
+#errMsg {
+    color:red;
+}
+
+.login_container {
+    width:600px;
+    height:200px;
+    text-align: center;
+    margin:15% auto auto auto;
+}
+
+.login_logo {
+    width:60%;
+    height:200px;
+    float:left;
+    margin-right:20px;
+}
+
+.login_div {
+    width:35%;
+    height:100px;
+    float:left;
+}
+
+.input_small input, .input_small select {
+    min-width: 80px;
+    max-width:100px;
+}
+
+.input_normal input, .input_normal select {
+    width: 160px;
+}
+
+.input_big input, .input_big select {
+    width: 240px;
+}
+
+.input_small input[type=checkbox], .input_normal input[type=checkbox], .input_big input[type=checkbox] {
+    width:auto;
+}
+
+.main_logo {
+    width:100px;
+    height:60px;
+}
+
+.north {
+    height: 60px;
+}
+
+.north.wel_msg {
+    float: right;
+    height:60px;
+    line-height:60px;
+    margin-right:50px;
+}
+
+.west {
+    width:200px;
+}
+
+.site_menu {
+    padding:10px;
+}
+
+.site_win_small {
+    width:400px;
+    height:200px;
+    padding:10px;
+}
+
+.site_win_normal {
+    width: 500px;
+    height:300px;
+    padding: 10px;
+}
+
+.site_win_normal_wider {
+    width: 700px;
+    height:300px;
+    padding: 10px;
+}
+
+.site_win_big {
+    width:600px;
+    height:400px;
+    padding:10px;
+}
+
+.site_win_big_wider {
+    width: 800px;
+    height:400px;
+    padding:10px;
+}
+
+.site_table {
+    border-collapse: collapse;
+    border:1px dotted #ccc;
+    min-width: 400px;
+}
+
+.site_table tr th {
+    padding: 5px;
+    border:1px dotted #ccc;
+    text-align: center;
+}
+
+.site_table tr td {
+    padding: 5px;
+    border:1px dotted #ccc;
+    text-align: left;
+}
+
+.site_table_td_title {
+    background-color: #ccc;
+}
+
+.site_textarea {
+    height:100px;
+}
+
+#verImg {
+    max-width: 480px;
+    max-height:280px;
+}
+
+.layer {
+    background-color:white;
+    height:3000px;
+    width:3000px;
+    z-index:1000;
+    position:absolute;
+    top:0px;
+    left:0px;
+}
+
+.datagrid-row {
+    height: 200px;
+}
+
+.datagrid-cell {
+    height:200px;
+    line-height:200px;
+}
+
+.product-img {
+    min-width: 100px;
+    min-height: 100px;
+}
+
