@@ -31,7 +31,7 @@ public class JDProductParser implements ProductParser {
                         Element productA = productEle.getElementsByClass("p-img").get(0).getElementsByTag("a").get(0);
                         String url = "https:" + productA.attr("href").substring(2);
                         String imgUrl = "https:" + productA.getElementsByTag("img").get(0).attr("src");
-                        double salePrice = Double.valueOf(productEle.getElementsByClass("p-price").get(0).getElementsByTag("i").get(0).text());
+                        String salePrice = productEle.getElementsByClass("p-price").get(0).getElementsByTag("i").get(0).text();
                         String title = productEle.getElementsByClass("p-name").get(0).getElementsByTag("a").get(0).attr("title");
                         // String shop = productEle.getElementsByClass("productShop-name").get(0).text();
                         Product product = new Product();

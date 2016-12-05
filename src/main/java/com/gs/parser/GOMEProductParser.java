@@ -30,7 +30,7 @@ public class GOMEProductParser implements ProductParser {
                         Element productLi = productEles.get(i);
                         Element productEle = productLi.getElementsByClass("item-tab-warp").get(0);
                         Element productInfo = productLi.getElementsByClass("productInfo").get(0);
-                        double price = Double.valueOf(productInfo.attr("price"));
+                        String price = productInfo.attr("price");
                         Element productA = productEle.getElementsByClass("item-pic").get(0).getElementsByTag("a").get(0);
                         String url = productA.attr("href");
                         String imgUrl = productA.getElementsByTag("img").get(0).attr("gome-src");

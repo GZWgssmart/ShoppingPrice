@@ -41,7 +41,7 @@ public class TMALLProductParser implements ProductParser {
                             imgUrl = img.attr("data-ks-lazyload");
                         }
                         imgUrl = "https:" + imgUrl;
-                        double salePrice = Double.valueOf(productEle.getElementsByClass("productPrice").get(0).getElementsByTag("em").get(0).text().substring(1));
+                        String salePrice = productEle.getElementsByClass("productPrice").get(0).getElementsByTag("em").get(0).text().substring(1);
                         String title = productEle.getElementsByClass("productTitle").get(0).getElementsByTag("a").get(0).attr("title");
                         String shop = productEle.getElementsByClass("productShop-name").get(0).text();
                         Product product = new Product();

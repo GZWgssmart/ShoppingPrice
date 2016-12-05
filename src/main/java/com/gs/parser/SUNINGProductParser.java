@@ -29,7 +29,7 @@ public class SUNINGProductParser implements ProductParser {
         return imgUrl.substring(imgUrl.lastIndexOf("/") + 1, imgUrl.lastIndexOf("_") - 2).split("-");
     }
 
-    private double getPrice(String imgUrl) {
+    private String getPrice(String imgUrl) {
         String[] idVendor = getIDVendor(imgUrl);
         String vendor = idVendor[0];
         String id = idVendor[1].substring(9);
@@ -42,11 +42,11 @@ public class SUNINGProductParser implements ProductParser {
             String priceStr = EntityUtils.toString(resp.getEntity());
             int begin = priceStr.indexOf("promotionPrice") + "promotionPrice\":\"".length();
             int end = priceStr.indexOf("\"bookPrice\"") - 3;
-            return Double.valueOf(priceStr.substring(begin, end));
+            return priceStr.substring(begin, end);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return 0;
+        return null;
     }
 
     public List<Product> parserList(String searchKey, int count) {

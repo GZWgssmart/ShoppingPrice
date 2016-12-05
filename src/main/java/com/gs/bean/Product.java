@@ -10,7 +10,7 @@ public class Product {
     private String platform;
     private String seller;
     private double originalPrice;
-    private double salePrice;
+    private String salePrice;
     private String searchUrl;
     private String url;
     private int saleCount;
@@ -57,11 +57,11 @@ public class Product {
         this.originalPrice = originalPrice;
     }
 
-    public double getSalePrice() {
+    public String getSalePrice() {
         return salePrice;
     }
 
-    public void setSalePrice(double salePrice) {
+    public void setSalePrice(String salePrice) {
         this.salePrice = salePrice;
     }
 
