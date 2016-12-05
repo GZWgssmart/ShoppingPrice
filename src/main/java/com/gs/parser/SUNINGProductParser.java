@@ -40,8 +40,9 @@ public class SUNINGProductParser implements ProductParser {
         try {
             HttpResponse resp = client.execute(get);
             String priceStr = EntityUtils.toString(resp.getEntity());
+            System.out.println(priceStr);
             int begin = priceStr.indexOf("promotionPrice") + "promotionPrice\":\"".length();
-            int end = priceStr.indexOf("\"bookPrice\"") - 3;
+            int end = priceStr.indexOf("\"bookPrice\"") - 2;
             return priceStr.substring(begin, end);
         } catch (IOException e) {
             e.printStackTrace();
